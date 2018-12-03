@@ -1,0 +1,431 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 ArialMT;\f2\fnil\fcharset0 Consolas;
+\f3\fmodern\fcharset0 Courier;\f4\fmodern\fcharset0 Courier-Bold;\f5\fnil\fcharset204 PTSans-Regular;
+\f6\fnil\fcharset0 Menlo-Regular;\f7\fnil\fcharset0 Georgia;}
+{\colortbl;\red255\green255\blue255;\red27\green29\blue31;\red235\green236\blue237;\red241\green241\blue241;
+\red14\green114\blue164;\red17\green137\blue135;\red36\green38\blue41;\red104\green26\blue29;\red43\green39\blue19;
+\red255\green247\blue212;\red14\green0\blue45;\red114\green121\blue129;\red13\green0\blue129;\red37\green127\blue159;
+\red184\green73\blue12;\red249\green249\blue249;\red26\green26\blue26;\red83\green83\blue83;\red29\green111\blue63;
+\red13\green95\blue24;\red50\green91\blue142;\red38\green38\blue38;\red11\green96\blue192;\red127\green135\blue144;
+\red109\green109\blue109;\red234\green234\blue234;\red107\green0\blue1;\red14\green110\blue109;\red210\green0\blue53;
+\red66\green155\blue222;}
+{\*\expandedcolortbl;;\csgenericrgb\c10588\c11373\c12157;\csgenericrgb\c92157\c92549\c92941;\csgenericrgb\c94510\c94510\c94510;
+\csgenericrgb\c5490\c44706\c64314;\csgenericrgb\c6667\c53725\c52941;\csgenericrgb\c14118\c14902\c16078;\csgenericrgb\c40784\c10196\c11373;\csgenericrgb\c16863\c15294\c7451;
+\csgenericrgb\c100000\c96863\c83137;\csgenericrgb\c5490\c0\c17647;\csgenericrgb\c44706\c47451\c50588;\csgenericrgb\c5098\c0\c50588;\csgenericrgb\c14510\c49804\c62353;
+\csgenericrgb\c72157\c28627\c4706;\csgenericrgb\c97647\c97647\c97647;\csgenericrgb\c10196\c10196\c10196;\csgenericrgb\c32549\c32549\c32549;\csgenericrgb\c11373\c43529\c24706;
+\csgenericrgb\c5098\c37255\c9412;\csgenericrgb\c19608\c35686\c55686;\csgenericrgb\c14902\c14902\c14902;\csgenericrgb\c4314\c37647\c75294;\csgenericrgb\c49804\c52941\c56471;
+\csgenericrgb\c42745\c42745\c42745;\csgenericrgb\c91765\c91765\c91765;\csgenericrgb\c41961\c0\c392;\csgenericrgb\c5490\c43137\c42745;\csgenericrgb\c82353\c0\c20784;
+\csgenericrgb\c25882\c60784\c87059;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid1\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid101\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid201\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\margl1440\margr1440\vieww21000\viewh12040\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 My Notes \
+\
+Getting the data :\
+\
+Read all the *detail.csv.  \
+Renamed "2015Q2-house-disburse-detail.csv" to \
+"2015Q2-house-disburse-detail-old.csv"\
+Then renamed "2015Q2-house-disburse-detail-updated.csv" to \
+"2015Q2-house-disburse-detail.csv".\
+Then redirected all the filenames to "filename.txt" \
+using the command:  ls  *detail.csv > filename.txt\
+\
+# Create a list of filename called file_list\
+# Strip '\\n' at the end of the filename\
+#Ref: https://stackoverflow.com/questions/42488579/remove-n-from-each-string-stored-in-a-python-list\
+\
+\
+\
+Part 1 :  \
+\
+1) \'92AMOUNT\'92 column is of type string.  Need to convert this to int.\
+\
+https://stackoverflow.com/questions/42719749/pandas-convert-string-to-int\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf2 \expnd0\expndtw0\kerning0
+use\'a0
+\f2 \cb3 pd.to_numeric(df['ID'], errors='coerce')
+\f1 \cb1 \'a0to convert those values to\'a0
+\f2 \cb3 NaN
+\f1 \cb1 , note that this will produce a dtype of\'a0
+\f2 \cb3 float
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0  \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+2) Adding all the rows of a column in pandas data frame\
+\
+http://blog.mathandpencil.com/column-and-row-sums\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs30 \cf0 \cb4 \expnd0\expndtw0\kerning0
+df
+\f4\b .
+\f3\b0 \cf5 sum\cf0 (axis
+\f4\b =
+\f3\b0 \cf6 0\cf0 )\
+\
+3) Getting low memory.So splitting the file_list into pieces\
+\
+4) Getting dtype warning for the last file\'97 2018Q1\
+\
+Ref:  https://stackoverflow.com/questions/12468179/unicodedecodeerror-utf8-codec-cant-decode-byte-0x9c\
+\pard\pardeftab720\sa300\partightenfactor0
+
+\f1 \cf2 \cb1 Changing the engine from C to Python did the trick for me.\
+Engine is C:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf7 \cb3 pd.read_csv(gdp_path, sep=\cf8 '\\t'\cf7 , engine=\cf8 'c'\cf7 )\cf9 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs30 \cf2 \cb10 'utf-8' codec can't decode byte 0x92 in position 18: invalid start byte\cb1 \
+\pard\pardeftab720\sa300\partightenfactor0
+\cf2 Engine is Python:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf7 \cb3 pd.read_csv(gdp_path, sep=\cf8 '\\t'\cf7 , engine=\cf8 'python'\cf7 )\cf9 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs30 \cf0 \cb4 ===================================================\
+\
+Part 2:\
+\
+1) Pooled Standard Deviation\
+\
+https://www.statisticshowto.datasciencecentral.com/pooled-standard-deviation/\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f5\fs26 \cf11 \cb1   2)  To get rows where payments is strictly positive\
+\
+https://stackoverflow.com/questions/15891038/change-data-type-of-columns-in-pandas\
+\
+#Try for first file\
+df = pd.read_csv('2009Q3-house-disburse-detail.csv', sep=',', engine = 'python')\
+\
+df['AMOUNT'] = df['AMOUNT'].apply(pd.to_numeric, errors='coerce') \
+df = df[df['AMOUNT'] > 0]\
+df.head()\
+\
+3) Convert a string to a date.\
+\
+Ref: https://chrisalbon.com/python/basics/strings_to_datetime/\
+\
+from datetime import datetime\
+df['COVERAGE PERIOD'] = pd.to_datetime(df['END DATE']) - pd.to_datetime(df['START DATE'])\
+df['COVERAGE PERIOD'].head()\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs30 \cf11 4) Removing NaT in datetime column.\
+https://stackoverflow.com/questions/23747451/filtering-all-rows-with-nat-in-a-column-in-dataframe-python\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf7 \cb3 df[\cf8 "TMP"\cf7 ] = df.index.values                \cf12 # index is a DateTimeIndex\cf7 \
+df = df[df.TMP.notnull()]                  \cf12 # remove all NaT values\cf7 \
+df.drop([\cf8 "TMP"\cf7 ], axis=\cf8 1\cf7 , inplace=\cf13 True\cf7 )     \cf12 # delete TMP again\cf9 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs30 \cf11 \cb1 \
+5) '2017Q2-house-disburse-detail.csv' has wrong titles for the columns\
+So renaming the columns\
+https://stackoverflow.com/questions/11346283/renaming-columns-in-pandas\
+\
+df.columns = [\'91a\'92, \'91b\'92]  # assign the new names\
+=============================================================================\
+\
+Part4:\
+\'97\'97\'97\'97\
+1) To check for null values in a column:\
+\
+https://stackoverflow.com/questions/36226083/how-to-find-which-columns-contain-any-nan-value-in-pandas-dataframe-python\
+\
+Example:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf14 \cb3 In\cf7  [\cf8 97\cf7 ]: df\
+\cf14 Out\cf7 [\cf8 97\cf7 ]:\
+     a    b  c\
+\pard\pardeftab720\partightenfactor0
+\cf8 0\cf7   \cf14 NaN\cf7   \cf8 7.0\cf7   \cf8 0\cf7 \
+\cf8 1\cf7   \cf8 0.0\cf7   \cf14 NaN\cf7   \cf8 4\cf7 \
+\cf8 2\cf7   \cf8 2.0\cf7   \cf14 NaN\cf7   \cf8 4\cf7 \
+\cf8 3\cf7   \cf8 1.0\cf7   \cf8 7.0\cf7   \cf8 0\cf7 \
+\cf8 4\cf7   \cf8 1.0\cf7   \cf8 3.0\cf7   \cf8 9\cf7 \
+\cf8 5\cf7   \cf8 7.0\cf7   \cf8 4.0\cf7   \cf8 9\cf7 \
+\cf8 6\cf7   \cf8 2.0\cf7   \cf8 6.0\cf7   \cf8 9\cf7 \
+\cf8 7\cf7   \cf8 9.0\cf7   \cf8 6.0\cf7   \cf8 4\cf7 \
+\cf8 8\cf7   \cf8 3.0\cf7   \cf8 0.0\cf7   \cf8 9\cf7 \
+\cf8 9\cf7   \cf8 9.0\cf7   \cf8 0.0\cf7   \cf8 1\cf9 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf14 In\cf7  [\cf8 5\cf7 ]: df.isnull().any()\
+\cf14 Out\cf7 [\cf8 5\cf7 ]:\
+a     \cf13 True\cf7 \
+b     \cf13 True\cf7 \
+c    \cf13 False\cf7 \
+dtype: bool\
+\
+\cf14 In\cf7  [\cf8 7\cf7 ]: df.columns[df.isnull().any()].tolist()\
+\cf14 Out\cf7 [\cf8 7\cf7 ]: [\cf8 'a'\cf7 , \cf8 'b'\cf7 ]\
+==================================================================================\
+Part 5 :\cf9 \
+1) Extracting some columns from a data frame\
+Ref: https://stackoverflow.com/questions/11285613/selecting-multiple-columns-in-a-pandas-dataframe\
+\pard\pardeftab720\partightenfactor0
+\cf7 df1 = df[[\cf8 'a'\cf7 ,\cf8 'b'\cf7 ]]\cf9 \
+\
+2) Filter out the NaN values in BIOGUIDE_ID\
+https://stackoverflow.com/questions/13413590/how-to-drop-rows-of-pandas-dataframe-whose-value-in-certain-columns-is-nan\
+\
+filtered_df = df[df[\'91EPS\'92].notnull()]\
+\
+3) Find out number of unique entries in each group.\
+https://stackoverflow.com/questions/38309729/count-unique-values-with-pandas-per-groups/38309823\
+\cf7 df = df.groupby(\cf8 'domain'\cf7 )[\cf8 'ID'\cf7 ].nunique()\
+\
+\pard\pardeftab720\partightenfactor0
+\cf13 print\cf7  (df)\
+domain\
+\pard\pardeftab720\partightenfactor0
+\cf8 'facebook.com'\cf7     \cf8 1\cf7 \
+\cf8 'google.com'\cf7       \cf8 1\cf7 \
+\cf8 'twitter.com'\cf7      \cf8 2\cf7 \
+\cf8 'vk.com'\cf7           \cf8 3\cf7 \
+\pard\pardeftab720\partightenfactor0
+\cf14 Name\cf7 : ID, dtype: int64\cf9 \
+=====================================================================================\
+\
+Part 6:\
+\
+1) Send a dataframe column to a list.\
+\
+2) Append a data frame to another one\
+\
+https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.append.html\
+\
+\pard\pardeftab720\sl316\partightenfactor0
+
+\f4\b \cf15 \cb16 >>> 
+\f3\b0 \cf17 df \cf18 =\cf17  pd\cf18 .\cf17 DataFrame([[\cf19 1\cf17 , \cf19 2\cf17 ], [\cf19 3\cf17 , \cf19 4\cf17 ]], columns\cf18 =\cf20 list\cf17 (\cf21 'AB'\cf17 ))\
+
+\f4\b \cf15 >>> 
+\f3\b0 \cf17 df\
+\pard\pardeftab720\sl316\partightenfactor0
+\cf22    A  B\cf17 \
+\cf22 0  1  2\cf17 \
+\cf22 1  3  4\cf17 \
+\pard\pardeftab720\sl316\partightenfactor0
+
+\f4\b \cf15 >>> 
+\f3\b0 \cf17 df2 \cf18 =\cf17  pd\cf18 .\cf17 DataFrame([[\cf19 5\cf17 , \cf19 6\cf17 ], [\cf19 7\cf17 , \cf19 8\cf17 ]], columns\cf18 =\cf20 list\cf17 (\cf21 'AB'\cf17 ))\
+
+\f4\b \cf15 >>> 
+\f3\b0 \cf17 df\cf18 .\cf17 append(df2)\
+\pard\pardeftab720\sl316\partightenfactor0
+\cf22    A  B\cf17 \
+\cf22 0  1  2\cf17 \
+\cf22 1  3  4\cf17 \
+\cf22 0  5  6\cf17 \
+\cf22 1  7  8\cf17 \
+\
+\pard\pardeftab720\sl316\partightenfactor0
+
+\f4\b \cf15 >>> 
+\f3\b0 \cf17 df\cf18 .\cf17 append(df2, ignore_index\cf18 =
+\f4\b \cf20 True
+\f3\b0 \cf17 )\
+\pard\pardeftab720\sl316\partightenfactor0
+\cf22    A  B\cf17 \
+\cf22 0  1  2\cf17 \
+\cf22 1  3  4\cf17 \
+\cf22 2  5  6\cf17 \
+\cf22 3  7  8\cf17 \
+\
+3) Converting a groupby data frame with reindexed columns\
+https://stackoverflow.com/questions/10373660/converting-a-pandas-groupby-object-to-dataframe/32307259\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf7 \cb3 df1 = pandas.\cf14 DataFrame\cf7 ( \{ \
+    \cf8 "Name"\cf7  : [\cf8 "Alice"\cf7 , \cf8 "Bob"\cf7 , \cf8 "Mallory"\cf7 , \cf8 "Mallory"\cf7 , \cf8 "Bob"\cf7  , \cf8 "Mallory"\cf7 ] , \
+    \cf8 "City"\cf7  : [\cf8 "Seattle"\cf7 , \cf8 "Seattle"\cf7 , \cf8 "Portland"\cf7 , \cf8 "Seattle"\cf7 , \cf8 "Seattle"\cf7 , \cf8 "Portland"\cf7 ] \} )\cf9 \
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl320\partightenfactor0
+\ls1\ilvl0
+\f1 \cf2 \cb1 \kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+I think this is the easiest way - a one liner which uses the nice fact that you can name the series column with reset_index:\'a0
+\f2 \cb3 df1.groupby( [ "Name", "City"]).size().reset_index(name="count")
+\f1 \cb1 \'a0\'96\'a0{\field{\*\fldinst{HYPERLINK "https://stackoverflow.com/users/4096199/ben"}}{\fldrslt \cf23 Ben}}\'a0{\field{\*\fldinst{HYPERLINK "https://stackoverflow.com/questions/10373660/converting-a-pandas-groupby-object-to-dataframe/32307259#comment59784354_32307259"}}{\fldrslt \cf24 \uc0\u8234 Mar 17 '16 at 18:41}}\'a0\uc0\u8232 \u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 		4) For filtered data frame, count does not work.\
+		\
+		https://github.com/pandas-dev/pandas/issues/16174\
+		\
+		5) To create a set of payee by year so that the payee in the set will be unique.\
+		\
+		https://stackoverflow.com/questions/39551566/create-a-set-from-a-series-in-pandas\
+		\
+\pard\pardeftab720\partightenfactor0
+\ls1\ilvl0
+\f2 \cf14 \cb3 		\expnd0\expndtw0\kerning0
+In\cf7  [\cf8 1\cf7 ]: s = pd.\cf14 Series\cf7 ([\cf8 1\cf7 , \cf8 2\cf7 , \cf8 3\cf7 , \cf8 1\cf7 , \cf8 1\cf7 , \cf8 4\cf7 ])\
+\pard\pardeftab720\partightenfactor0
+\ls1\ilvl0\cf7 \kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\ls1\ilvl0\cf14 \kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+In\cf7  [\cf8 2\cf7 ]: s.unique()\
+\ls1\ilvl0\cf14 \kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+Out\cf7 [\cf8 2\cf7 ]: array([\cf8 1\cf7 , \cf8 2\cf7 , \cf8 3\cf7 , \cf8 4\cf7 ])\
+\pard\pardeftab720\partightenfactor0
+\ls1\ilvl0\cf7 \kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\ls1\ilvl0\cf14 \kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+In\cf7  [\cf8 3\cf7 ]: set(s)\
+\ls1\ilvl0\cf14 \kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+Out\cf7 [\cf8 3\cf7 ]: \{\cf8 1\cf7 , \cf8 2\cf7 , \cf8 3\cf7 , \cf8 4\cf7 \}\cf9 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f1 \cf2 \cb1 \kerning1\expnd0\expndtw0 		6) Convert a column to a list: Use .tolist() method on the column\
+\pard\tx720\pardeftab720\partightenfactor0
+\cf2 https://stackoverflow.com/questions/22341271/get-list-from-pandas-dataframe-column\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf13 \cb3 \expnd0\expndtw0\kerning0
+from\cf7  pandas \cf13 import\cf7  *\
+\
+d = \{\cf8 'one'\cf7  : \cf14 Series\cf7 ([\cf8 1.\cf7 , \cf8 2.\cf7 , \cf8 3.\cf7 ], index=[\cf8 'a'\cf7 , \cf8 'b'\cf7 , \cf8 'c'\cf7 ]),\
+    \cf8 'two'\cf7  : \cf14 Series\cf7 ([\cf8 1.\cf7 , \cf8 2.\cf7 , \cf8 3.\cf7 , \cf8 4.\cf7 ], index=[\cf8 'a'\cf7 , \cf8 'b'\cf7 , \cf8 'c'\cf7 , \cf8 'd'\cf7 ])\}\
+\
+df = \cf14 DataFrame\cf7 (d)\
+\
+\cf12 #print df\cf7 \
+\
+\cf13 print\cf7  \cf8 "DF"\cf7 , type(df[\cf8 'one'\cf7 ]), \cf8 "\\n"\cf7 , df[\cf8 'one'\cf7 ]\
+\
+dfList = df[\cf8 'one'\cf7 ].tolist()\
+\
+\cf13 print\cf7  \cf8 "DF list"\cf7 , dfList, type(dfList)\cf9 \
+\pard\tx720\pardeftab720\partightenfactor0
+
+\f1 \cf2 \cb1 \kerning1\expnd0\expndtw0 \
+7) Set theory \'97 calculate the difference of two sets.\
+\
+https://www.programiz.com/python-programming/set\
+\
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f2\fs30 \cf25 \cb26 \expnd0\expndtw0\kerning0
+# use difference function on A\cf0 \
+>>> A.difference(B)\
+\{\cf27 1\cf0 , \cf27 2\cf0 , \cf27 3\cf0 \}\
+\
+\cf25 # use - operator on B\cf0 \
+>>> B - A\
+\{\cf27 8\cf0 , \cf27 6\cf0 , \cf27 7\cf0 \}\
+\
+\cf25 # use difference function on B\cf0 \
+>>> B.difference(A)\
+\{\cf27 8\cf0 , \cf27 6\cf0 , \cf27 7\cf0 \}\
+\pard\tx720\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf2 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 		\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+		\
+		Question 1 \'97 Part 7:\
+		\
+		1) How to write a python list to a file ?\
+		\
+		https://stackoverflow.com/questions/899103/writing-a-list-to-a-file-with-python\
+		\
+\pard\pardeftab720\partightenfactor0
+\ls2\ilvl0
+\f2 \cf13 \cb3 		\expnd0\expndtw0\kerning0
+with\cf7  open(filepath, \cf8 'w'\cf7 ) \cf13 as\cf7  file_handler:\
+\pard\pardeftab720\partightenfactor0
+\ls2\ilvl0\cf7 \kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+    \cf13 for\cf7  item \cf13 in\cf7  the_list:\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+        file_handler.write(\cf8 "\{\}\\n"\cf7 .format(item))\cf9 \
+\pard\tx720\pardeftab720\partightenfactor0
+
+\f1 \cf2 \cb1 \kerning1\expnd0\expndtw0 \
+2) JSON file\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f6\fs22 \cf0 \CocoaLigature0      \
+https://projects.propublica.org/api-docs/congress-api/members/#get-a-specific-member\
+\
+Example: 
+\f3\fs24 \cf22 \expnd0\expndtw0\kerning0
+\CocoaLigature1 curl "https://api.propublica.org/congress/v1/members/K000388.json" -\cf28 H\cf22  \cf29 "X-API-Key: PROPUBLICA_API_KEY"
+\f6\fs22 \cf0 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\pard\tx720\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf2 \CocoaLigature1 \
+For member 
+\f3\fs28 \cf0 \expnd0\expndtw0\kerning0
+K000362,\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs24 \cf22 curl "https://api.propublica.org/congress/v1/members/K000362.json" -\cf28 H\cf22  \cf29 "X-API-Key: PROPUBLICA_API_KEY"
+\f1\fs26 \cf2 \kerning1\expnd0\expndtw0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 		\expnd0\expndtw0\kerning0
+\uc0\u8232 \
+\ls3\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+Help on downloading the json file \'97 https://kubuckets.com/topic/6089/propublica-apis-and-how-to query-an-api\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+-\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f7\fs32 \cf22 \
+\pard\pardeftab720\partightenfactor0
+\cf22 Thank you for your request.\
+The following key has been issued for Congress API\
+KEY: yd0GBjLDvWfGZq06m9DzpJMfnXZvGqZjySrcTfZ5\'a0\
+\
+An email has been sent to\'a0jayashri.jagannathan@gmail.com\'a0for your records.\'a0\
+\
+ProPublica, a nonprofit newsroom, is able to provide public access to this API for free thanks to donations from individuals like you. If you appreciate our work, please consider\'a0{\field{\*\fldinst{HYPERLINK "https://www.propublica.org/donate"}}{\fldrslt \cf30 making a donation}}. Thank you!\'a0\
+\
+If you have any questions or feedback about our APIs, we'd love to hear from you! Drop us a line at\'a0{\field{\*\fldinst{HYPERLINK "mailto:apihelp@propublica.org"}}{\fldrslt \cf30 apihelp@propublica.org}}\'a0\
+\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.propublica.org/datastore/api/propublica-congress-api"}}{\fldrslt \cf30 Back to Congress API}}\'a0\
+Sample:\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f6\fs22 \cf0 \kerning1\expnd0\expndtw0 \CocoaLigature0 curl "https://api.propublica.org/congress/v1/members/K000362.json" -H "X-API-Key: yd0GBjLDvWfGZq06m9DzpJMfnXZvGqZjySrcTfZ5" > K000362.json\
+\
+Top 20 Spenders Replist\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs28 \cf0 \expnd0\expndtw0\kerning0
+\CocoaLigature1 'C001103', 'K000376', 'K000362', 'N000181', 'V000132', 'L000571',\
+       'A000374', 'Z000018', 'C001036', 'V000129', 'Y000033', 'B001278',\
+       'P000606', 'B000287', 'T000193', 'C001049', 'B001248', 'R000580',\
+       'L000576', 'P000596'\
+\
+\
+C001103  K000376  K000362 N000181 V000132 \
+L000571  A000374  Z000018 C001036 V000129 \
+Y000033  B001278  P000606 B000287 T000193 \
+C001049  B001248  R000580 L000576 P000596}
