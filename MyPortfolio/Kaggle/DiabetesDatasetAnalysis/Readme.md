@@ -8,24 +8,24 @@ This dataset is on diabetes.
 
 Columns:
 
-# Pregnancies :  This column provides information on the number of times a patient was pregnant.
+Pregnancies :  This column provides information on the number of times a patient was pregnant.
 
-# Glucose:  This column tells about plasma glucose concentration at 2 hours in an oral glucose tolerance test.
+Glucose:  This column tells about plasma glucose concentration at 2 hours in an oral glucose tolerance test.
 
-#  BloodPressure:  This column shows diastolic blood pressure (mmHg).
+BloodPressure:  This column shows diastolic blood pressure (mmHg).
 
-# SkinThickness:  This column provides information on triceps skinfold thickness (mm).
+SkinThickness:  This column provides information on triceps skinfold thickness (mm).
 
-# Insulin:   This column provides information about 2-hour serum insulin (mu U/ml).
+Insulin:   This column provides information about 2-hour serum insulin (mu U/ml).
 
-# BMI:   This column indicates body mass index (BMI), calculated as weight in kg divided by the square of height in meters.
+BMI:   This column indicates body mass index (BMI), calculated as weight in kg divided by the square of height in meters.
 
-# DiabetesPedigreeFunction:  This column represents the Diabetes Pedigree Function.
+DiabetesPedigreeFunction:  This column represents the Diabetes Pedigree Function.
 
 
-# Age:  This column provides information about years.
+Age:  This column provides information about years.
 
-# Outcome:   This column in the dataset is the target, where 0 represents 'No' (healthy), and 1 represents 'Yes' (diabetic).
+Outcome:   This column in the dataset is the target, where 0 represents 'No' (healthy), and 1 represents 'Yes' (diabetic).
 
 ———————————————————
 
